@@ -10,6 +10,16 @@
 
     <name>Refrigerator Manager</name>
 
+    <dependencies>
+        <!-- JUnit Dependency -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -31,7 +41,7 @@
                     <version>3.6.0.1398</version>
                     <configuration>
                         <!-- URL to download sonar properties file from GitHub -->
-                        <propertiesFileUrl>https://github.com/VickyPods/sonar_scanner/blob/main/sonar-project.properties</propertiesFileUrl>
+                        <propertiesFileUrl>https://raw.githubusercontent.com/your-username/your-repo/main/sonar.properties</propertiesFileUrl>
                     </configuration>
                 </plugin>
 
