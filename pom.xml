@@ -8,20 +8,12 @@
     <artifactId>sonarqube-maven-example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Basic Maven Project Qulity Check</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <name>Refrigerator Manager</name>
 
     <build>
         <pluginManagement>
             <plugins>
+                <!-- Maven Compiler Plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -31,15 +23,19 @@
                         <target>8</target>
                     </configuration>
                 </plugin>
+
+                <!-- SonarQube Scanner Plugin -->
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>3.6.0.1398</version>
                     <configuration>
-                        <!-- Update SonarQube server URL -->
-                        <sonar.host.url>http://3.101.13.52:9000</sonar.host.url>
+                        <!-- URL to download sonar properties file from GitHub -->
+                        <propertiesFileUrl>https://github.com/VickyPods/sonar_scanner/blob/main/sonar-project.properties</propertiesFileUrl>
                     </configuration>
                 </plugin>
+
+                <!-- JaCoCo Plugin for Code Coverage -->
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
@@ -49,47 +45,17 @@
         </pluginManagement>
     </build>
 
+    <!-- Profiles -->
     <profiles>
         <profile>
             <id>sonar</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>
-                    http://3.101.13.52:9000
-                </sonar.host.url>
-            </properties>
         </profile>
-        <profile>
-            <id>coverage</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>prepare-agent</id>
-                                <goals>
-                                    <goal>prepare-agent</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>report</id>
-                                <goals>
-                                    <goal>report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
+
+        <!-- Add other profiles as needed -->
+
     </profiles>
 
 </project>
